@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+	x:Class="MauiMatchingPairs.Components.MatchCards.MatchingPairsView"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:converters="clr-namespace:MauiMatchingPairs.Converters"
+	x:Name="mp">
+	<ContentView.Resources>
+		<converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+		<converters:StringFormatMultiConverter x:Key="StringFormatMultiConverter" />
+	</ContentView.Resources>
+
+	<Grid
+		Padding="24"
+		BindingContext="{x:Reference mp}"
+		ColumnDefinitions="*,*"
+		RowDefinitions="*,Auto,Auto"
+		RowSpacing="12">
+		<CollectionView
+			x:Name="LeftCollection"
+			Grid.Column="0"
+			IsEnabled="{Binding AllMatched, Source={x:Reference mp}, Converter={StaticResource InverseBoolConverter}}"
+			ItemsSource="{Binding LeftWords}"
+			SelectionChanged="OnLeftSelection"
+			SelectionMode="Single">
+			<CollectionView.ItemsLayout>
+				<LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+			</CollectionView.ItemsLayout>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Border
+						Padding="5,10"
+						BackgroundColor="{Binding DefaultBackgroundColor}"
+						HorizontalOptions="FillAndExpand"
+						IsEnabled="{Binding IsLeftEnabled}"
+						Stroke="{Binding LeftColor}"
+						StrokeShape="RoundRectangle 20"
+						VerticalOptions="Center"
+						WidthRequest="150">
+						<Label
+							HorizontalOptions="Center"
+							SemanticProperties.Description="{Binding Left}"
+							Text="{Binding Left}"
+							TextColor="{Binding LeftTextColor}"
+							VerticalOptions="Center" />
+					</Border>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+		<CollectionView
+			x:Name="RightCollection"
+			Grid.Column="1"
+			IsEnabled="{Binding AllMatched, Source={x:Reference mp}, Converter={StaticResource InverseBoolConverter}}"
+			ItemsSource="{Binding RightWords}"
+			SelectionChanged="OnRightSelection"
+			SelectionMode="Single">
+			<CollectionView.ItemsLayout>
+				<LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+			</CollectionView.ItemsLayout>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Border
+						Padding="5,10"
+						BackgroundColor="{Binding DefaultBackgroundColor}"
+						HorizontalOptions="FillAndExpand"
+						IsEnabled="{Binding IsRightEnabled}"
+						Stroke="{Binding RightColor}"
+						StrokeShape="RoundRectangle 20"
+						VerticalOptions="Center"
+						WidthRequest="150">
+						<Label
+							HorizontalOptions="Center"
+							SemanticProperties.Description="{Binding Right}"
+							Text="{Binding Right}"
+							TextColor="{Binding RightTextColor}"
+							VerticalOptions="Center" />
+					</Border>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+		<Label
+			Grid.Row="1"
+			Grid.ColumnSpan="2"
+			Margin="0,0,0,10"
+			FontAttributes="Bold"
+			FontSize="18"
+			HorizontalOptions="Center"
+			IsVisible="{Binding ShowAttempts}"
+			SemanticProperties.Description="{Binding AttemptCount, Source={x:Reference mp}}">
+			<Label.Text>
+				<MultiBinding Converter="{StaticResource StringFormatMultiConverter}">
+					<Binding Path="AttemptCount" Source="{x:Reference mp}" />
+					<Binding Path="AttemptCountStringFormat" Source="{x:Reference mp}" />
+				</MultiBinding>
+			</Label.Text>
+		</Label>
+		<Button
+			x:Name="buttonConfirm"
+			Grid.Row="2"
+			Grid.ColumnSpan="2"
+			IsEnabled="{Binding AllMatched, Source={x:Reference mp}}"
+			SemanticProperties.Description="{Binding ButtonConfirmText, Source={x:Reference mp}}"
+			Style="{Binding ButtonConfirmStyle, Source={x:Reference mp}}"
+			Text="{Binding ButtonConfirmText, Source={x:Reference mp}}"
+			Clicked="OnButtonConfirmClicked" />
+	</Grid>
+</ContentView>

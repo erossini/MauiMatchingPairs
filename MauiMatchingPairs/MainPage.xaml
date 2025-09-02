@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="MauiMatchingPairs.MainPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:components="clr-namespace:MauiMatchingPairs.Components.MatchCards">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="30,0" Spacing="25">
+			<components:MatchingPairsView x:Name="cvPairs" Pairs="{Binding MyPairs}" />
+
+			<components:MatchingPairsView
+				ButtonConfirmCommand="{Binding OnContinueCommand}"
+				ButtonConfirmText="Next"
+				CorrectColor="LimeGreen"
+				DefaultBackgroundColor="White"
+				DefaultStrokeColor="Gray"
+				DefaultTextColor="Black"
+				Delay="300"
+				Pairs="{Binding MyPairs}"
+				SelectedBorderColor="DodgerBlue"
+				ShowAttempts="True"
+				WrongColor="Crimson" />
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
