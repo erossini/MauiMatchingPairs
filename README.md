@@ -6,6 +6,8 @@
 
 This component is ideal for educational apps, language learning, memory games, and any scenario where matching logic is required.
 
+![matching](https://github.com/user-attachments/assets/48b797c8-aba9-4aaf-b5a7-788672e771d4)
+
 ---
 
 ## Features
