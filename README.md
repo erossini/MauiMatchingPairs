@@ -8,6 +8,8 @@ This component is ideal for educational apps, language learning, memory games, a
 
 ![matching](https://github.com/user-attachments/assets/48b797c8-aba9-4aaf-b5a7-788672e771d4)
 
+More information about this component is available on [PureSourceCode.com](https://puresourcecode.com/dotnet/maui/building-a-custom-matching-pairs-component-in-net-maui/).
+
 ---
 
 ## Features
