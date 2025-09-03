@@ -6,7 +6,7 @@
 	xmlns:components="clr-namespace:MauiMatchingPairs.Components.MatchCards">
 
 	<ScrollView>
-		<VerticalStackLayout Padding="30,0" Spacing="25">
+		<VerticalStackLayout Padding="10,5" Spacing="25">
 			<components:MatchingPairsView x:Name="cvPairs" Pairs="{Binding MyPairs}" />
 
 			<components:MatchingPairsView

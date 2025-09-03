@@ -91,7 +91,7 @@ public partial class MatchingPairsView : ContentView
             nameof(DefaultTextColor),
             typeof(Color),
             typeof(MatchingPairsView),
-            Colors.White);
+            Colors.Black);
 
     public static readonly BindableProperty DelayProperty =
         BindableProperty.Create(
@@ -425,8 +425,18 @@ public partial class MatchingPairsView : ContentView
 
         selectedLeft = null;
         selectedRight = null;
+
+        // Force UI update workaround for iOS
+        LeftCollection.SelectionChanged -= OnLeftSelection;
+        LeftCollection.SelectedItem = new object();
         LeftCollection.SelectedItem = null;
+        LeftCollection.SelectionChanged += OnLeftSelection;
+
+        // Force UI update workaround for iOS
+        RightCollection.SelectionChanged -= OnRightSelection;
+        RightCollection.SelectedItem = new object();
         RightCollection.SelectedItem = null;
+        RightCollection.SelectionChanged += OnRightSelection;
 
         UpdateAllMatched();
 
