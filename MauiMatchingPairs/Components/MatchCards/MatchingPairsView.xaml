@@ -37,6 +37,17 @@
 						StrokeShape="RoundRectangle 20"
 						VerticalOptions="Center"
 						WidthRequest="150">
+						<Border.VisualStateManager.VisualStateGroups>
+							<VisualStateGroup Name="CommonStates">
+								<VisualState Name="Selected">
+									<VisualState.Setters>
+										<!-- Remove or set to transparent -->
+										<Setter Property="BackgroundColor" Value="Transparent" />
+										<!-- Or set to your desired color -->
+									</VisualState.Setters>
+								</VisualState>
+							</VisualStateGroup>
+						</Border.VisualStateManager.VisualStateGroups>
 						<Label
 							HorizontalOptions="Center"
 							SemanticProperties.Description="{Binding Left}"
@@ -68,6 +79,17 @@
 						StrokeShape="RoundRectangle 20"
 						VerticalOptions="Center"
 						WidthRequest="150">
+						<Border.VisualStateManager.VisualStateGroups>
+							<VisualStateGroup Name="CommonStates">
+								<VisualState Name="Selected">
+									<VisualState.Setters>
+										<!-- Remove or set to transparent -->
+										<Setter Property="BackgroundColor" Value="Transparent" />
+										<!-- Or set to your desired color -->
+									</VisualState.Setters>
+								</VisualState>
+							</VisualStateGroup>
+						</Border.VisualStateManager.VisualStateGroups>
 						<Label
 							HorizontalOptions="Center"
 							SemanticProperties.Description="{Binding Right}"
